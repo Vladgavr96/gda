@@ -14,21 +14,37 @@ grades = [
 
 # В переменную students запишите новый список с именами студентов,
 # как они находятся в таблице сверху-вниз.
-
+students = []
+for i in grades[1:]:
+    students.append(i[0])
+print(students)
 
 
 # В переменную assignments запишите новый список с названиями предметов,
 # что содержатся в первой строке.
-
+assignments = grades[0][1:]
+print(assignments)
 
 
 # В переменную grade_lists запишите новый словарь, который будет
 # хранить по именам студентов списки их оценок. Оценки должны быть числами.
 # Например grade_lists['Максим'] == [100, 90, 80].
-
+grade_lists = {}
+for i in grades[1:]:
+    grade_lists[i[0]] = list(map(int, i[1:]))
+print(grade_lists)
 
 
 
 # В переменную avg_grades_by_student запишите новый словарь, который будет
 # хранить по именам студентов среднюю оценку за все предметы.
 # Например avg_grades_by_student['Максим'] == 90.
+avg_grades_by_student = {}
+for key, res in grade_lists.items():
+    avg_grades_by_student[key] = sum(res)/len(res)
+
+print(avg_grades_by_student)
+
+
+#Напишите функцию, которая принимала бы имя и оценки по всем трем предметам для нового студента и
+# добавляла бы эту информацию в список grades
