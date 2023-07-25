@@ -10,3 +10,15 @@ last_element = lst.pop()
 result = last_element % 2 != 0
 lst.append(result)
 print(lst)
+
+
+'''Объявите класс с именем TravelBlog и объявите в нем атрибут:
+total_blogs: 0
+У объектов должны быть атрибуты name и days
+Пример
+name: 'Франция'
+days: 6
+Увеличьте значение атрибута total_blogs класса TravelBlog на единицу при создании объекта.
+добавьте метод который бы показывал текущее значени total_blogs
+Создайте несколько объектов и вывидите на экран значени total_blogs
+'''
