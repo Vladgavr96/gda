@@ -1,0 +1,13 @@
+{
+    "from": "vlad",
+    "to": "anton",
+    "text": "Hi!",
+    "on_delte": null,
+    "tuple": [
+        1,
+        2,
+        3
+    ],
+    "number": 5,
+    "bool": true
+}

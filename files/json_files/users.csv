@@ -1,0 +1,4 @@
+username,password,is_admin
+admin,qwerty123,True
+test_user,test_password,False
+test_user2,test_password2,False
