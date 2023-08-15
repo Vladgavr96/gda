@@ -41,7 +41,7 @@ print(p1.info())'''
     -все кроме чисел и строк"""
 
 
-class ListWorker:
+'''class ListWorker:
     def __init__(self, *args):
         self.args = args
 
@@ -64,11 +64,22 @@ class ListWorker:
         for i in self.args:
             if not type(i) == int and not type(i) == str:
                 list3.append(i)
-        return list3
+        return list3'''
+class ListWorker:
+    def __init__(self, *args):
+        self.args = args
 
+    def numbers(self):
+        return list(filter(lambda x: type(x) is int, self.args))
+
+    def string(self):
+        return list(filter(lambda x: type(x) is str, self.args))
+
+    def other(self):
+        return list(filter(lambda x: type(x) is not int and not str, self.args))
 
 l1 = ListWorker(3, 3, 4, 'aaa', 'bbb', 'ccc', 5, 7.5, None, True, False)
-print(l1.number())
+print(l1.numbers())
 print(l1.string())
 print(l1.other())
 
