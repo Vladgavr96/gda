@@ -1,11 +1,18 @@
 from django.db import models
 
 
-# Create your models here.
+class Airport(models.Model):
+    name = models.CharField(max_length=60, verbose_name='Название')
+    city = models.CharField(max_length=60, verbose_name='Город')
+
+    def __str__(self):
+        return f'Аэропорт {self.name} в городе {self.city}'
+
+
 class Flight(models.Model):
-    origin = models.CharField(max_length=256, verbose_name='Точка отправления')
-    destination = models.CharField(max_length=256, verbose_name='Точка прибытия')
+    origin = models.ForeignKey(Airport, verbose_name='Точка отправления', related_name='flight_origin', on_delete=models.CASCADE)
+    destination = models.ForeignKey(Airport, verbose_name='Точка прибытия', related_name='flight_destination', on_delete=models.CASCADE)
     duration = models.IntegerField(verbose_name='Длительность')
 
     def __str__(self):
-        return f'Вылет из {self.origin} в {self.destination}. Длительность {self.duration} часов'
+        return f'Вылет из {self.origin} в {self.destination}. Длительность {self.duration} часов\n'
