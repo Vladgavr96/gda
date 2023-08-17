@@ -10,8 +10,8 @@ class Airport(models.Model):
 
 
 class Flight(models.Model):
-    origin = models.ForeignKey(Airport, verbose_name='Точка отправления', related_name='flight_origin', on_delete=models.CASCADE)
-    destination = models.ForeignKey(Airport, verbose_name='Точка прибытия', related_name='flight_destination', on_delete=models.CASCADE)
+    origin = models.ForeignKey(Airport, verbose_name='Точка отправления', related_name='flight_origin', on_delete=models.CASCADE, null=True)
+    destination = models.ForeignKey(Airport, verbose_name='Точка прибытия', related_name='flight_destination', on_delete=models.CASCADE, null=True)
     duration = models.IntegerField(verbose_name='Длительность')
 
     def __str__(self):
