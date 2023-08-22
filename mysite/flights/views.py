@@ -10,10 +10,13 @@ def hello(request):
 
 def flights(request):
     f = Flight.objects.all()
-    return HttpResponse(f)
+    context = {
+        'flights': f
+    }
+    return render(request, 'index.html', context)
 
 
 def flight(request, flight_id):
-    f = Flight.objects.get(pk=flight_id)
-    #f = get_object_or_404(Flight, pk=flight_id)
+    #f = Flight.objects.get(pk=flight_id)
+    f = get_object_or_404(Flight, pk=flight_id)
     return HttpResponse(f)
