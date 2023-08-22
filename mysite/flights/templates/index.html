@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Вылеты {% endblock %}
+
+{% block body %}
     <h1>Полеты</h1>
     <ul>
-        {% for flight in flights %}
-        <li>{{ flight }}</li>
+        {% for airport in airports %}
+        <p>{{ airport }}</p>
+              {% for flight in airport.get_arrivals %}
+                <li> <a href="{% url 'flight' flight.id %}"> {{flight}} </a> </li>
+              {% endfor %}
         <br>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

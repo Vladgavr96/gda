@@ -8,6 +8,9 @@ class Airport(models.Model):
     def __str__(self):
         return f'Аэропорт {self.name} в городе {self.city}'
 
+    def get_arrivals(self):
+        return self.flight_destination.all()
+
 
 class Flight(models.Model):
     origin = models.ForeignKey(Airport, verbose_name='Точка отправления', related_name='flight_origin', on_delete=models.CASCADE, null=True)
