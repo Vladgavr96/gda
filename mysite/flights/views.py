@@ -26,10 +26,10 @@ def flight(request, flight_id):
 
 def date_filter(request):
     start_date = request.GET.get('start_date')
+    print(request.GET)
     f = None
     if start_date:
         f = Flight.objects.filter(created__gte = start_date)
-        print(f)
     context = {
         'flights': f,
         'date': start_date
