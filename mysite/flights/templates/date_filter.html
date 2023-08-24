@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Вылеты {% endblock %}
+{% block title %} Фильтр по дате {% endblock %}
 
 {% block body %}
     <h1>Полеты</h1>
@@ -10,13 +10,12 @@
         <button type="submit">Подтвердить</button>
     </form>
 
+{% if date %}
+    <p>Вылеты начиная с {{date}}</p>
     <ul>
-        {% for airport in airports %}
-        <p>{{ airport }}</p>
-              {% for flight in airport.get_arrivals %}
+              {% for flight in flights %}
                 <li> <a href="{% url 'flights:flight' flight.id %}"> {{flight}} </a> </li>
               {% endfor %}
-        <br>
-        {% endfor %}
     </ul>
+{%endif%}
 {% endblock %}
