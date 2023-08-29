@@ -7,11 +7,23 @@
     <form method="GET" action="{% url  'flights:date_filter'%}">
         <label>Фильтрация по дате</label>
         <input type="date" name="start_date" id="start_date">
+        <fieldset>
+            <input type="radio" id="gte" name="filter_type" value="gte" checked>
+            <label>После указанной даты</label>
+            <input type="radio" id="lte" name="filter_type" value="lte">
+            <label>До указанной даты</label>
+        </fieldset>
         <button type="submit">Подтвердить</button>
     </form>
 
 {% if date %}
+    {% if filter_type == 'gte' %}
     <p>Вылеты начиная с {{date}}</p>
+    {% endif %}
+
+    {% if filter_type == 'lte' %}
+    <p>Вылеты до {{date}}</p>
+    {% endif %}
     <ul>
               {% for flight in flights %}
                 <li> <a href="{% url 'flights:flight' flight.id %}"> {{flight}} </a> </li>
