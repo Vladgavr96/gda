@@ -5,7 +5,10 @@ cursor = conn.cursor()
 
 cursor.execute("""
 CREATE TABLE products
-(ID
+(ID INTEGER PRIMARY KEY AUTOINCREMENT,
+product TEXT,
+shop TEXT,
+price int
 )
 """)
 
