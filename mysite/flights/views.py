@@ -5,7 +5,31 @@ from .models import Flight, Airport
 
 # Create your views here.
 def hello(request):
-    return HttpResponse('hello')
+    #all_objs = Flight.objects.all()[1:3]
+    #first_obj = Flight.objects.first()
+    #ordered_obj = Flight.objects.order_by('-duration') сортировка по длительности
+    #longest_obj = Flight.objects.order_by('-duration').first()
+    #get_obj = Flight.objects.get(id=1)
+
+    #my_airport = Airport.objects.get(name='Пулково')
+    #get_airports_flights = Flight.objects.filter(destination=my_airport) #тут можно вместо объекта аэропорта использовать его id
+
+    #get_exclude_airports = Flight.objects.filter(origin=2).exclude(destination=1)
+    #print(get_exclude_airports.first())
+
+    #my_airport1 = Airport.objects.get(name='Пулково')
+    #my_airport2 = Airport.objects.get(name='Хитроу')
+    #f = Flight.objects.create(origin=my_airport1, destination=my_airport2, duration=2)
+    #print(f)
+
+    #f = Flight.objects.get(id=1)
+    #f.duration = 200
+    #f.save()
+
+    Flight.objects.get(id=1).delete()
+
+
+    return HttpResponse('Done')
 
 
 def airports(request):
@@ -22,8 +46,8 @@ def flight(request, flight_id):
     context = {
         'flight': f
     }
-    print(f.passanger_flights.all())
-    print(dir(f))
+    #print(f.passanger_flights.all())
+    #print(dir(f))
     return render(request, 'flight.html', context)
 
 
