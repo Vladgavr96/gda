@@ -5,5 +5,10 @@
 {% block body %}
     <h1>Полет {{flight.id}}</h1>
     <h1>Полет {{flight}}</h1>
-    <a href="{% url 'airports'%}">  Вернуться назад </a>
+    <ul>
+    {% for passanger in flight.passanger_flights.all %}
+        <li> {{ passanger }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'flights:airports'%}">  Вернуться назад </a>
 {% endblock %}

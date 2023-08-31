@@ -12,6 +12,11 @@ class Airport(models.Model):
     def get_arrivals(self):
         return self.flight_destination.all()
 
+    class Meta:
+        verbose_name = 'Аэропорт'
+        verbose_name_plural = 'Аэропорты'
+        ordering = ('city', )
+
 
 class Flight(models.Model):
     origin = models.ForeignKey(Airport, verbose_name='Точка отправления', related_name='flight_origin',
@@ -24,8 +29,16 @@ class Flight(models.Model):
     def __str__(self):
         return f'Вылет из {self.origin} в {self.destination}. Длительность {self.duration} часов\n'
 
+    class Meta:
+        verbose_name = 'Вылет'
+        verbose_name_plural = 'Вылеты'
+        ordering = ('origin', 'duration')
+
 
 class Passenger(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=60)
     second_name = models.CharField(verbose_name='Фамилия', max_length=60)
     flights = models.ManyToManyField(Flight, verbose_name='Вылеты', related_name='passanger_flights')
+
+    def __str__(self):
+        return f'{self.name} {self.second_name}'

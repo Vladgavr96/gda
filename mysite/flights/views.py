@@ -22,6 +22,8 @@ def flight(request, flight_id):
     context = {
         'flight': f
     }
+    print(f.passanger_flights.all())
+    print(dir(f))
     return render(request, 'flight.html', context)
 
 
