@@ -6,7 +6,7 @@
     <h1>Полет {{flight.id}}</h1>
     <h1>Полет {{flight}}</h1>
     <ul>
-    {% for passanger in flight.passanger_flights.all %}
+    {% for passanger in passangers %}
         <li> {{ passanger }}</li>
     {% endfor %}
     </ul>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Flight, Airport
+from .models import Flight, Airport, Passenger
 
 
 # Create your views here.
@@ -27,9 +27,16 @@ def hello(request):
     #f.save()
 
     #Flight.objects.get(id=1).delete()
+    """Airport.objects.bulk_create([
+        Airport(name='Иваново', city='Иваново'),
+        Airport(name='Внуково', city='Москва')
+    ])"""
 
+    #print(Airport.objects.get_or_create(name='Домодедово', city='Москва'))
+    my_airport = Airport.objects.get(name='Шереметьево')
+    res = Passenger.objects.filter(flights__origin=my_airport)[:3]
 
-    return HttpResponse('Done')
+    return HttpResponse(res)
 
 
 def airports(request):
@@ -44,10 +51,9 @@ def flight(request, flight_id):
     # f = Flight.objects.get(pk=flight_id)
     f = get_object_or_404(Flight, pk=flight_id)
     context = {
-        'flight': f
+        'flight': f,
+        'passangers': f.passanger_flights.all()
     }
-    #print(f.passanger_flights.all())
-    #print(dir(f))
     return render(request, 'flight.html', context)
 
 
