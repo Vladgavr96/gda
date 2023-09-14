@@ -26,7 +26,7 @@ def hello(request):
     #f.duration = 200
     #f.save()
 
-    Flight.objects.get(id=1).delete()
+    #Flight.objects.get(id=1).delete()
 
 
     return HttpResponse('Done')
