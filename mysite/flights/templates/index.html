@@ -22,6 +22,9 @@
 
     <ul>
         {% for airport in airports %}
+        {% if airport.image %}
+            <img src="{{ airport.image.url }}" width='200' height='200'>
+        {% endif %}
         <p>{{ airport }}</p>
               {% for flight in airport.get_arrivals %}
                 <li> <a href="{% url 'flights:flight' flight.id %}"> {{flight}} </a> </li>

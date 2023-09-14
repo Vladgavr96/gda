@@ -72,3 +72,11 @@ def date_filter(request):
         'filter_type':filter_type
     }
     return render(request, 'date_filter.html', context)
+
+def passanger(request, slug):
+    p = Passenger.objects.get(slug=slug)
+
+    context = {
+        'passanger' : p
+    }
+    return HttpResponse(p)
