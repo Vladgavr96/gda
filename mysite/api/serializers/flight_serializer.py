@@ -9,15 +9,23 @@ class FlightSerializer(serializers.ModelSerializer):
     passengers = serializers.SerializerMethodField()
 
     def get_passengers(self, obj):
-        from api.serializers import PassengerSerializer
-        #passengers = Passenger.objects.filter(flights=obj)
+        from api.serializers import PassengerListSerializer
+        passengers = Passenger.objects.filter(flights=obj)
+        #passengers = instance.passanger_flights.all()
 
-        passengers = obj.passanger_flights.all()
-
-        #data = PassengerSerializer(passengers, many=True)
-        #print(data)
-        return 1
+        data = PassengerListSerializer(passengers, many=True).data
+        return data
 
     class Meta:
         model = Flight
         fields = ('__all__')
+
+class FlightShortSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
+
+    def get_name(self, obj):
+        return str(obj)
+
+    class Meta:
+        model = Flight
+        fields = ('name', )
