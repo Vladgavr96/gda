@@ -9,3 +9,9 @@ class PassengerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Passenger
         fields = ('__all__')
+
+
+class PassengerListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Passenger
+        fields = ('name', 'second_name')
