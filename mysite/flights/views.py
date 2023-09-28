@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Flight, Airport, Passenger
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -38,8 +39,11 @@ def hello(request):
 
     return HttpResponse(res)
 
-
+@login_required
 def airports(request):
+    print(request.user.is_active)
+    print(request.user.is_staff)
+    print(request.user.is_authenticated)
     f = Airport.objects.all()
     context = {
         'airports': f
